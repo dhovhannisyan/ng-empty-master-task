@@ -1,0 +1,40 @@
+<div class="action-panel">
+    <div class="order">
+        <label for="title">Order: </label>
+        <select id="title" ng-model="sort">
+            <option value="title">Title</option>
+            <option value="date">Date</option>
+        </select>
+    </div>
+    <div class="date">
+        <label for="date">Only date: </label>
+        <input ng-model="showOnlyDate" id="date" type="checkbox">
+    </div>
+    <div class="search">
+        <label for="search">Search: </label>
+        <input ng-model="search" id="search" type="text">
+    </div>
+</div>
+
+<ul class="element-list">
+    <li ng-repeat="el in dataService.elements" | orderBy:sort | filter:{'title' : search}" 
+                    ng-click="selectElement(el)"
+                    ng-class="{'selected': isSelected(el)}">
+        <div class="title">
+            <label>Title: </label>
+            <span>{{ el.title }}</span>
+        </div>
+        <div class="date">
+            <label>Date: </label>
+            <date>{{ el.date | date : "dd.MM.y" + (showOnlyDate ? "" : " hh:mm")  }}</date>
+        </div>
+    </li>
+</ul>
+
+<div class="element-add">
+    <form ng-submit="addElement()">
+        <label for="new-title">New Title: </label>
+        <input ng-model="newTitle" id="new-title" type="text">
+        <button type="submit">Add</button>
+    </form>
+</div>

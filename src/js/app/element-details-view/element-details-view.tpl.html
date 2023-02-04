@@ -1,0 +1,34 @@
+
+<div ng-hide="!dataService.selectedElement">
+    <div class="selected-item" >
+        <label>Selected Item: </label>
+        <span>{{ dataService.selectedElement.title }}</span>
+    </div>
+    
+    <div class="tags">
+        <label>Tags:</label>
+        <ul class="tag-list">
+            <li ng-repeat="tag in dataService.selectedElement.tags track by $index">
+                <span class="tag-name">{{ tag }}</span>
+                <button class="remove-tag-btn" ng-click="removeTag($index)">X</button>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="tag-add">
+        <form ng-submit="addTag()">
+            <label for="new-tag">New Tag: </label>
+            <input ng-model="newTag" id="new-tag" type="text">
+            <button type="submit">Add</button>
+        </form>
+    </div>
+</div>
+
+<div ng-hide="dataService.selectedElement">
+    No selected element
+</div>
+
+
+
+
+

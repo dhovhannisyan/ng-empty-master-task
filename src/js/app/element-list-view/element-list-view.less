@@ -1,0 +1,35 @@
+
+@import "variables";
+
+element-list-view {
+  display: block;
+
+  .action-panel {
+        padding: 5px;
+        .order, .date, .search  {
+            margin-bottom: 5px;
+        }
+    }
+
+    .element-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        border-top: 1px solid @c-gray;
+        li {
+            padding: 5px;
+            border-bottom: 1px solid @c-gray;
+            cursor: pointer;
+            &:hover {
+                background-color: #ddd;
+            }
+            &.selected {
+                background-color: #ddd;
+            }
+        }
+    }
+
+    .element-add {
+        padding: 10px 5px;
+    }
+}
